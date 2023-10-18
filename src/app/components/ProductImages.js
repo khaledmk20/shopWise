@@ -1,7 +1,8 @@
 "use client";
+import Image from "next/image";
 import { useState } from "react";
 import styled from "styled-components";
-const BigImage = styled.img`
+const BigImage = styled(Image)`
   max-width: 100%;
   max-height: 200px;
 `;
@@ -10,7 +11,7 @@ const BigImageWrapper = styled.div`
   text-align: center;
 `;
 
-const Img = styled.img`
+const Img = styled(Image)`
   max-width: 100%;
   max-height: 100%;
 `;
@@ -33,7 +34,15 @@ function ProductImages({ images }) {
   return (
     <>
       <BigImageWrapper>
-        <BigImage src={activeImg} />
+        <BigImage
+          src={activeImg}
+          alt="Product image"
+          width={200}
+          height={200}
+          style={{
+            objectFit: "contain",
+          }}
+        />
       </BigImageWrapper>
       <ImageButtons>
         {images.map((image) => (
@@ -42,7 +51,15 @@ function ProductImages({ images }) {
             key={image}
             onClick={() => setActiveImg(image)}
           >
-            <Img src={image} />
+            <Img
+              alt="Product image"
+              src={image}
+              width={100}
+              height={100}
+              style={{
+                objectFit: "contain",
+              }}
+            />
           </ImageButton>
         ))}
       </ImageButtons>

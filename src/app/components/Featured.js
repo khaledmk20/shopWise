@@ -6,6 +6,8 @@ import { HiShoppingCart } from "react-icons/hi";
 import ButtonLink from "./ButtonLink";
 import { useContext } from "react";
 import { CartContext } from "./CartContext";
+import toast from "react-hot-toast";
+import Image from "next/image";
 const Bg = styled.div`
   background-color: #222;
   color: #fff;
@@ -66,6 +68,7 @@ function Featured({ product }) {
   const { addProduct } = useContext(CartContext);
   function addFeaturedToCart() {
     addProduct(product._id);
+    toast.success(`${product.title} has been added to cart successfully`);
   }
 
   return (
@@ -91,7 +94,12 @@ function Featured({ product }) {
             </div>
           </Column>
           <Column>
-            <img
+            <Image
+              width={300}
+              height={200}
+              style={{
+                objectFit: "contain",
+              }}
               src="https://ecommerce-dashboard.s3.amazonaws.com/1696963188021.png"
               alt="featured image"
             />

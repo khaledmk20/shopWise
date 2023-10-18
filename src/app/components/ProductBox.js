@@ -5,6 +5,8 @@ import { formatCurrency } from "../utils/helpers";
 import Link from "next/link";
 import { useContext } from "react";
 import { CartContext } from "./CartContext";
+import toast from "react-hot-toast";
+import Image from "next/image";
 
 const ProductWrapper = styled.div``;
 
@@ -60,18 +62,33 @@ const PriceRow = styled.div`
 //   }
 // `;
 
-function ProductBox({ _id, title, description, price, images }) {
+function ProductBox({ _id, title, price, images }) {
   const { addProduct } = useContext(CartContext);
   const url = `/products/${_id}`;
   return (
     <ProductWrapper>
       <WhiteBox href={url}>
-        <img src={images?.[0]} alt="" />
+        <Image
+          width={100}
+          height={100}
+          style={{
+            objectFit: "contain",
+          }}
+          src={images?.[0]}
+          alt={title}
+        />
       </WhiteBox>
       <ProductInfoBox>
         <Title href={url}>{title}</Title>
         <PriceRow>
-          <Button onClick={() => addProduct(_id)} primary={1} outline={1}>
+          <Button
+            onClick={() => {
+              addProduct(_id);
+              toast.success(`${title} has been added to cart successfully`);
+            }}
+            primary={1}
+            outline={1}
+          >
             Add to cart - {<b> {formatCurrency(price)}</b>}
           </Button>
         </PriceRow>

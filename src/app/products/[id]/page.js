@@ -14,6 +14,7 @@ import { HiShoppingCart } from "react-icons/hi";
 import { formatCurrency } from "@/app/utils/helpers";
 import { CartContext } from "@/app/components/CartContext";
 import { useContext } from "react";
+import toast from "react-hot-toast";
 
 const ColWrapper = styled.div`
   display: grid;
@@ -65,7 +66,15 @@ function ProductPage() {
             <PriceRow>
               <Price>{formatCurrency(product.price)}</Price>
               <div>
-                <Button primary={1} onClick={() => addProduct(product._id)}>
+                <Button
+                  primary={1}
+                  onClick={() => {
+                    addProduct(product._id);
+                    toast.success(
+                      `${product.title} has been added to cart successfully`
+                    );
+                  }}
+                >
                   <HiShoppingCart style={{ marginRight: "5px" }} /> Add to cart
                 </Button>
               </div>

@@ -3,13 +3,13 @@ import styled from "styled-components";
 import Header from "../components/Header";
 import Center from "../components/Center";
 import Button from "../components/Button";
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../components/CartContext";
 import axios from "axios";
 import Table from "../components/Table";
 import { formatCurrency } from "../utils/helpers";
 import Input from "../components/Input";
-import toast from "react-hot-toast";
+import Image from "next/image";
 
 const ColumnsWrapper = styled.div`
   display: grid;
@@ -91,9 +91,10 @@ function CartPage() {
       window.location.href.includes("success")
     ) {
       setIsSuccess(true);
-      clearCart();
+      window.localStorage.removeItem("cart");
     }
-  }, [clearCart]);
+  }, []);
+
   function moreOfThisProduct(id) {
     addProduct(id);
   }
@@ -164,8 +165,17 @@ function CartPage() {
                     <tr key={product._id}>
                       <ProductInfoCell>
                         <ProductImageBox>
-                          <img src={product.images[0]} alt={product.title} />
+                          <Image
+                            width={100}
+                            height={100}
+                            style={{
+                              objectFit: "contain",
+                            }}
+                            src={product.images[0]}
+                            alt={product.title}
+                          />
                         </ProductImageBox>
+
                         {product.title}
                       </ProductInfoCell>
                       <td>
@@ -182,7 +192,7 @@ function CartPage() {
                           +
                         </Button>
                       </td>
-                      <td>
+                      <td style={{ fontSize: ".9rem" }}>
                         {formatCurrency(
                           cartProducts.filter((id) => id === product._id)
                             .length * product.price
@@ -193,7 +203,9 @@ function CartPage() {
                   <tr>
                     <td></td>
                     <td></td>
-                    <td>{formatCurrency(total)}</td>
+                    <td style={{ paddingTop: "10px" }}>
+                      {formatCurrency(total)}
+                    </td>
                   </tr>
                 </tbody>
               </Table>
