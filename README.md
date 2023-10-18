@@ -18,7 +18,9 @@ Shop Wise is tailor-made for those who seek a smart and efficient way to shop fo
 - **Dedicated Customer Support**: Our 24/7 customer support team is here to assist with any inquiries or concerns specific to electronics.
 
 - **Exclusive Electronics Deals**: Take advantage of exclusive discounts, special promotions, and seasonal sales to maximize your savings on electronic devices.
-- 
+
+-   [Check it out](https://shopwise-store.vercel.app/)
+
 
 
 
