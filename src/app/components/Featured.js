@@ -68,6 +68,7 @@ function Featured({ product }) {
   const { addProduct } = useContext(CartContext);
   function addFeaturedToCart() {
     addProduct(product._id);
+    toast.success(`${product.title} has been added to cart successfully`);
   }
 
   return (

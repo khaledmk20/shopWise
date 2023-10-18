@@ -30,6 +30,7 @@ export default function RootLayout({ children }) {
         <CartContextProvider>
           <GlobalStyles />
           <QueryClientProvider client={queryClient}>
+            <Toaster position="top-center" reverseOrder={false} />
             <body>{children}</body>
           </QueryClientProvider>
         </CartContextProvider>
