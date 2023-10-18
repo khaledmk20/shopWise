@@ -84,7 +84,6 @@ function ProductBox({ _id, title, price, images }) {
           <Button
             onClick={() => {
               addProduct(_id);
-              toast.success(`${title} has been added to cart successfully`);
             }}
             primary={1}
             outline={1}

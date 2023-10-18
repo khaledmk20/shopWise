@@ -71,9 +71,6 @@ function ProductPage() {
                   primary={1}
                   onClick={() => {
                     addProduct(product._id);
-                    toast.success(
-                      `${product.title} has been added to cart successfully`
-                    );
                   }}
                 >
                   <HiShoppingCart style={{ marginRight: "5px" }} /> Add to cart
