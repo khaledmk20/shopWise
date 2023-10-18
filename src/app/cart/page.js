@@ -72,8 +72,7 @@ function CartPage() {
   const [products, setProducts] = useState([]);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const { cartProducts, addProduct, removeProduct, clearCart } =
-    useContext(CartContext);
+  const { cartProducts, addProduct, removeProduct } = useContext(CartContext);
 
   useEffect(() => {
     if (cartProducts.length > 0) {

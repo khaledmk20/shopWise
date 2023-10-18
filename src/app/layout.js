@@ -4,6 +4,7 @@ import StyledComponentsRegistry from "./registry";
 import { CartContextProvider } from "./components/CartContext";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import dynamic from "next/dynamic";
+import Header from "./components/Header";
 const Toaster = dynamic(
   () => import("react-hot-toast").then((c) => c.Toaster),
   {
