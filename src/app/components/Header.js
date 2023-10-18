@@ -80,7 +80,7 @@ function Header() {
           <NavButton
             onClick={() => setMobileNavigationActive(!mobileNavigationActive)}
           >
-            <AiOutlineMenu />
+            <AiOutlineMenu size={20} />
           </NavButton>
         </Wrapper>
       </Center>

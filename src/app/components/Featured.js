@@ -95,6 +95,7 @@ function Featured({ product }) {
           </Column>
           <Column>
             <Image
+              priority={true}
               width={300}
               height={200}
               style={{
