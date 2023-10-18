@@ -15,6 +15,7 @@ import { formatCurrency } from "@/app/utils/helpers";
 import { CartContext } from "@/app/components/CartContext";
 import { useContext } from "react";
 import toast from "react-hot-toast";
+import StyledComponentsRegistry from "@/app/registry";
 
 const ColWrapper = styled.div`
   display: grid;
@@ -53,7 +54,7 @@ function ProductPage() {
   return isLoading ? (
     <Spinner />
   ) : (
-    <>
+    <StyledComponentsRegistry>
       <Header />
       <Center>
         <ColWrapper>
@@ -82,7 +83,7 @@ function ProductPage() {
           </div>
         </ColWrapper>
       </Center>
-    </>
+    </StyledComponentsRegistry>
   );
 }
 export default ProductPage;
