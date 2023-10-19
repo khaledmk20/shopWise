@@ -1,5 +1,5 @@
 "use client";
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import StyledComponentsRegistry from "./registry";
 import { CartContextProvider } from "./components/CartContext";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -16,6 +16,12 @@ const GlobalStyles = createGlobalStyle`
   }
 
 `;
+
+const StyledContainer = styled(ToastContainer)`
+  .Toastify__progress-bar {
+    background-color: #0d3d29;
+  }
+`;
 const queryClient = new QueryClient();
 
 export default function RootLayout({ children }) {
@@ -27,7 +33,7 @@ export default function RootLayout({ children }) {
           <QueryClientProvider client={queryClient}>
             <body>
               <>
-                <ToastContainer
+                <StyledContainer
                   position="top-center"
                   autoClose={5000}
                   hideProgressBar={false}
