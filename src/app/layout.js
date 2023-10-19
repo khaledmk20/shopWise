@@ -4,10 +4,11 @@ import StyledComponentsRegistry from "./registry";
 import { CartContextProvider } from "./components/CartContext";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 const GlobalStyles = createGlobalStyle`
-
+:root {
+  --toastify-color-success: #0D3D29;
+}
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');  body{
     background-color: #eee;
     padding: 0;
@@ -17,11 +18,6 @@ const GlobalStyles = createGlobalStyle`
 
 `;
 
-const StyledContainer = styled(ToastContainer)`
-  .Toastify__progress-bar {
-    background-color: #0d3d29;
-  }
-`;
 const queryClient = new QueryClient();
 
 export default function RootLayout({ children }) {
@@ -33,7 +29,7 @@ export default function RootLayout({ children }) {
           <QueryClientProvider client={queryClient}>
             <body>
               <>
-                <StyledContainer
+                <ToastContainer
                   position="top-center"
                   autoClose={5000}
                   hideProgressBar={false}
