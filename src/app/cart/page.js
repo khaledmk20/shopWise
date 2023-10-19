@@ -72,7 +72,8 @@ function CartPage() {
   const [products, setProducts] = useState([]);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const { cartProducts, addProduct, removeProduct } = useContext(CartContext);
+  const { cartProducts, addProduct, removeProduct, isLocalStorageLoading } =
+    useContext(CartContext);
 
   useEffect(() => {
     if (cartProducts.length > 0) {
@@ -107,7 +108,6 @@ function CartPage() {
     const price = products.find((p) => p._id === productId)?.price || 0;
     total += price;
   }
-
   async function goToPayment(e) {
     e.preventDefault();
 
