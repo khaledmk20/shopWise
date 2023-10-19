@@ -6,8 +6,10 @@ import { HiShoppingCart } from "react-icons/hi";
 import ButtonLink from "./ButtonLink";
 import { useContext } from "react";
 import { CartContext } from "./CartContext";
-import toast from "react-hot-toast";
 import Image from "next/image";
+
+import { toast } from "react-toastify";
+import { ToastNotification } from "./ToastNotification";
 const Bg = styled.div`
   background-color: #222;
   color: #fff;
@@ -68,7 +70,7 @@ function Featured({ product }) {
   const { addProduct } = useContext(CartContext);
   function addFeaturedToCart() {
     addProduct(product._id);
-    toast.success(`${product.title} has been added to cart successfully`);
+    ToastNotification(`${product.title} has been added to cart successfully`);
   }
 
   return (

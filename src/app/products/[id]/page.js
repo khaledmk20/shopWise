@@ -14,8 +14,7 @@ import { HiShoppingCart } from "react-icons/hi";
 import { formatCurrency } from "@/app/utils/helpers";
 import { CartContext } from "@/app/components/CartContext";
 import { useContext } from "react";
-import toast from "react-hot-toast";
-import StyledComponentsRegistry from "@/app/registry";
+import { ToastNotification } from "@/app/components/ToastNotification";
 
 const ColWrapper = styled.div`
   display: grid;
@@ -54,7 +53,7 @@ function ProductPage() {
   return isLoading ? (
     <Spinner />
   ) : (
-    <StyledComponentsRegistry>
+    <>
       <Header />
       <Center>
         <ColWrapper>
@@ -71,7 +70,7 @@ function ProductPage() {
                   primary={1}
                   onClick={() => {
                     addProduct(product._id);
-                    toast.success(
+                    ToastNotification(
                       `${product.title} has been added to cart successfully`
                     );
                   }}
@@ -83,7 +82,7 @@ function ProductPage() {
           </div>
         </ColWrapper>
       </Center>
-    </StyledComponentsRegistry>
+    </>
   );
 }
 export default ProductPage;

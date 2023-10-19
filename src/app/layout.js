@@ -3,14 +3,9 @@ import { createGlobalStyle } from "styled-components";
 import StyledComponentsRegistry from "./registry";
 import { CartContextProvider } from "./components/CartContext";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import dynamic from "next/dynamic";
-import Header from "./components/Header";
-const Toaster = dynamic(
-  () => import("react-hot-toast").then((c) => c.Toaster),
-  {
-    ssr: false,
-  }
-);
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const GlobalStyles = createGlobalStyle`
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');  body{
@@ -30,8 +25,23 @@ export default function RootLayout({ children }) {
         <CartContextProvider>
           <GlobalStyles />
           <QueryClientProvider client={queryClient}>
-            <Toaster position="top-center" reverseOrder={false} />
-            <body>{children}</body>
+            <body>
+              <>
+                <ToastContainer
+                  position="top-center"
+                  autoClose={5000}
+                  hideProgressBar={false}
+                  newestOnTop={false}
+                  closeOnClick
+                  rtl={false}
+                  pauseOnFocusLoss
+                  draggable
+                  pauseOnHover
+                  theme="colored"
+                />
+                {children}
+              </>
+            </body>
           </QueryClientProvider>
         </CartContextProvider>
       </StyledComponentsRegistry>

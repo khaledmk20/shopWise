@@ -1,12 +1,11 @@
 import styled from "styled-components";
 import Button from "./Button";
-import { HiShoppingCart } from "react-icons/hi";
 import { formatCurrency } from "../utils/helpers";
 import Link from "next/link";
 import { useContext } from "react";
 import { CartContext } from "./CartContext";
-import toast from "react-hot-toast";
 import Image from "next/image";
+import { ToastNotification } from "./ToastNotification";
 
 const ProductWrapper = styled.div``;
 
@@ -84,7 +83,7 @@ function ProductBox({ _id, title, price, images }) {
           <Button
             onClick={() => {
               addProduct(_id);
-              toast.success(`${title} has been added to cart successfully`);
+              ToastNotification(`${title} has been added to cart successfully`);
             }}
             primary={1}
             outline={1}
